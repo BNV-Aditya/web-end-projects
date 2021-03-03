@@ -1,77 +1,55 @@
 <DOCTYPE! html>
     <head>
-        <title> Math QuiZ </title>
+        <title> Mr Cat's Math QuiZ </title>
     </head>
     <body onload = "andafunc()">
         <style>
-            body{
-                background-color: coral;
-                color: blueviolet;
-                cursor: crosshair;
-                font-style: italic;
-                font-family: cursive;
-                font-size: medium;
-                font-weight: bold;
-                text-shadow: 2px 2px 5px lime;
-            }
-            button{
-                height: 1cm;
-                width: 2.5cm;
-                color: rgb(91, 129, 255);
-                background-color: rgb(100, 255, 86);
-                border: ridge 0.125cm rgb(255, 231, 14);
-                box-shadow: 2px 2px 5px white;
-                transition:1000ms
-            }
-            button:hover{
-                height: 1cm;
-                width: 2.5cm;
-                color: lime;
-                background-color: lightseagreen;
-                border: groove 0.125cm rgb(255, 231, 14);
-                cursor: grab;
-                box-shadow: 2px 2px 5px black;
-            }
+            
         </style>
-        Welcome to the QuiZ
         <script>
-            var  D, da, ea, xa, ya, za, na, oa, db, eb, xb, yb, zb, nb, ob, dc, ec, xc, yc, zc, nc, oc, dd, ed, xd, yd, zd, nd, od, de, ee, xe, ye, ze, ne, oe,E;
+            var  D, da, ea, xa, ya, za, na, oa, db, eb, xb, yb, zb, nb, ob, dc, ec, xc, yc, zc, nc, oc, dd, ed, xd, yd, zd, nd, od, de, ee, xe, ye, ze, ne, oe;
             function andafunc(){
                 D = 0
                 da = 0
+                ea = 0
                 db = 0
+                eb = 0
                 dc = 0
+                ec = 0
                 dd = 0
+                ed = 0
                 de = 0
+                ee = 0
             };
             function chkfunc(){
                 if(na == oa){
                     da = da + 1    
                 }else{
-                    pass
+                    ea = ea + 1
                 };
                 if(nb == ob){
                     db = db + 1     
                 }else{
-                    pass
+                    eb = eb + 1
                 };
                 if(nc == oc){
                     dc = dc + 1     
                 }else{
-                    pass
+                    ec = ec + 1
                 };
                 if(nd == od){
                     dd = dd + 1     
                 }else{
-                    pass
+                    ed = ed + 1
                 };
                 if(ne == oe){
-                    de = de + 1     
+                    de = dd + 1     
                 }else{
-                    pass
+                    ee = ee + 1
                 };
                 D = da + db + dc + dd + de;
-                document.write("ur score "+D+"");
+                E = (D/5)*100
+                document.write("ur score "+D+" and percentage is "+E+" ");
                 };
         </script>
         <form>
