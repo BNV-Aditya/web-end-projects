@@ -1,0 +1,134 @@
+<DOCTYPE html>
+    <head>
+        <title> try web </title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <p
+         id = 'equation'>lol</p><br>
+        <p
+         id = 'score'>ANS</p>
+        <form>
+            <input 
+             type = 'button'
+             value = 'Submit'
+             id = 'clickButton'></input>
+            <input
+             type = 'text'
+             placeholder = 'answer here'
+             id = 'ans'></form>
+        </form>
+        <style>
+            body{                
+                background-image: linear-gradient(to right, rgb(255, 58, 44), rgb(255,206,45));                
+                color: rgb(217, 255, 0);     
+                font-variant: small-caps;      
+                font-family: monospace;
+                border: 1cm;
+                border-color: rgb(58, 97, 202);
+                }
+            input[type = 'button']{
+                background-image: linear-gradient(to left, rgb(255, 58, 44), rgb(255,206,45));
+                height: 0.8565cm;
+                width: 3.75cm;
+                border-radius: 2cm;
+                border-width: 0.125cm;
+                border-color:rgb(156, 40, 233);
+            }
+            input[type=text]{
+                height: 40px;
+                width: 125px;
+                color: blanchedalmond;
+                background-image: linear-gradient(to left, rgb(60, 200, 255),rgb(89,60,239));
+                font-weight: bolder;
+                font-family: 'Courier New', Courier, monospace;
+                box-shadow: 5px 5px 3px rgb(84, 101, 255);
+                border: 5px rgb(255, 68, 68) ridge;
+                transition:500ms
+            }
+            input[type=text]:hover{
+                height: 40px;
+                width: 150px;
+                box-shadow: 10px 10px 6px rgb(255, 111, 44);
+                border: 5px rgb(95, 159, 255) groove;
+            }
+            input[type=text]:focus{
+                height:45px;
+                width:175px;
+                box-shadow: 12px 12px 8px rgb(248, 92, 92);
+                border: 6px rgb(255,234,100) inset;
+            }
+        </style>
+        <script>
+            let no1,no2;
+            let operator_no,operator;
+            let equation,ans,ans_given,score,total_ques,percentage;
+
+            total_ques = 0
+            score = 0
+
+            function ques_func(){
+                operator_no = Math.floor(Math.random()*4)
+                switch (operator_no){
+                    case 0:
+                        operator = `+`
+                        no1 = Math.abs((Math.random()*1000).toFixed(0)*-1)
+                        no2 = Math.abs((Math.random()*1000).toFixed(0)*-1)
+                        ans = (no1+no2)
+                        break
+                    case 1:
+                        operator = `-`
+                        no1 = (Math.random()*1000).toFixed(0)
+                        no2 = (Math.random()*1000).toFixed(0)
+                        ans = Math.trunc(no1-no2)
+                        break
+                    case 2:
+                        operator = `*`
+                        no1 = (Math.random()*20).toFixed(0)
+                        no2 = (Math.random()*12).toFixed(0)
+                        ans = no1*no2
+                        break
+                    case 3:
+                        operator = `/`
+                        no1 = (Math.random()*1000).toFixed(0)
+                        no2 = (Math.random()*20).toFixed(0)
+                        ans = Math.trunc(no1/no2)
+                        break
+                }
+                equation = no1+operator+no2
+                document.getElementById(`equation`).innerHTML = String(equation)
+            }
+            function check_ans_func(){
+                ans_given = document.getElementById(`ans`).value
+                if(ans == ans_given){
+                    score = score+1
+                    total_ques = total_ques + 1
+                    percentage = (score/total_ques)*100
+                    document.getElementById(`score`).innerHTML = String(score) + `/` + String(total_ques) + ` percentage:` + String(percentage) + `%`
+                    document.getElementById("ans").value = ""
+                }else{
+                    total_ques = total_ques + 1
+                    score = score
+                    percentage = (score/total_ques)*100
+                    document.getElementById(`score`).innerHTML = String(score) + `/` + String(total_ques) + ` percentage:` + String(percentage) + `%`
+                    document.getElementById("ans").value = ""
+                }
+            }
+            function change_mouseout_func(){
+                document.getElementById(`clickButton`).value = 'Submit'
+            }
+            function change_mousein_func(){
+                document.getElementById(`clickButton`).value = 'U Submit?'
+            }
+            function examine_func(){
+                check_ans_func()
+                ques_func()
+            }
+            window.onload = ques_func
+            document.getElementById(`clickButton`).onmouseover = change_mousein_func
+            document.getElementById(`clickButton`).onmouseout = change_mouseout_func
+            document.getElementById(`clickButton`).onclick = examine_func
+        </script> 
+        </script>
+    </body>
+</DOCTYPE>
