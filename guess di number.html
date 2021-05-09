@@ -1,0 +1,159 @@
+<DOCTYPE html>
+    <head>
+        <title> try web </title>
+    </head>
+    <body>
+        <h1>Hello</h1><br>
+        <h3>welcome to guess the no</h3><br>
+        <h3>u have 10 chances to guess the random no</h3>
+        <h4>GO!!!!!</h4>
+        <p
+         id = 'tries'>lol</p><br>
+        <p
+         id = 'score'>ANS</p>
+        <p
+         id = "tries_no">no of tries</p>
+        <form>
+            <input 
+             type = 'button'
+             value = 'Submit'
+             id = 'clickButton'></input>
+             <input 
+             type = 'button'
+             value = 'New Game'
+             id = 'startButton'></input>
+            <input
+             type = 'text'
+             placeholder = 'answer here'
+             id = 'ans'></form>
+        </form>
+        <style>
+           body{                
+                background-image: linear-gradient(to right, rgb(255, 58, 44), rgb(255,206,45));                
+                color: rgb(217, 255, 0);     
+                font-variant: small-caps;      
+                font-family: monospace;
+                border: 1cm;
+                border-color: rgb(58, 97, 202);
+                }
+            input[type = 'button']{
+                background-image: linear-gradient(to left, rgb(255, 58, 44), rgb(255,206,45));
+                height: 0.8565cm;
+                width: 3.75cm;
+                border-radius: 2cm;
+                border-width: 0.125cm;
+                border-color:rgb(156, 40, 233);
+            }
+            input[type=text]{
+                height: 40px;
+                width: 125px;
+                color: rgb(255, 255, 255);
+                background-image: linear-gradient(to left, rgb(60, 200, 255),rgb(89,60,239));
+                font-weight: bolder;
+                font-family: 'Courier New', Courier, monospace;
+                box-shadow: 5px 5px 3px rgb(84, 101, 255);
+                border: 5px rgb(255, 68, 68) ridge;
+                transition:500ms
+            }
+            input[type=text]:hover{
+                height: 40px;
+                width: 150px;
+                box-shadow: 10px 10px 6px rgb(255, 111, 44);
+                border: 5px rgb(95, 159, 255) groove;
+            }
+            input[type=text]:focus{
+                height:45px;
+                width:175px;
+                box-shadow: 12px 12px 8px rgb(248, 92, 92);
+                border: 6px rgb(255,234,100) inset;
+            }
+        </style>
+        <script>
+            let Submit_btn = document.getElementById("clickButton")
+            let Ans_txt = document.getElementById("ans")
+            let Scoretxt = document.getElementById("score")
+            let triez = document.getElementById("tries")
+            let triez_no = document.getElementById("tries_no")
+            let New_Game = document.getElementById("startButton")
+            let Rnd_no,score,tries,no_tries
+
+            no_tries = 0
+            tries = []
+
+            function newgame(){
+                Rnd_no = Math.ceil(Math.random() * 100)
+                New_Game.disabled = true
+                no_tries = 0
+                score = ""
+                tries = []
+                New_Game.disabled = true
+                Submit_btn.disabled = false
+                Scoretxt.innerHTML = ""
+                triez.innerHTML = ""
+                triez_no.innerHTML = ""
+            }
+
+            function submit(){
+                if (Ans_txt.value < 100){
+                tries.push(String(Ans_txt.value))
+                }else{
+                    pass
+                }
+            }
+
+            function examine(){
+                if(tries.length != 11){
+
+                    if(String(Ans_txt.value) == String(Rnd_no)){
+                        score = "yay"
+                        Scoretxt.innerHTML = score
+                        triez.innerHTML = String(tries)
+                        triez_no.innerHTML = String("no of treis:"+String(no_tries+1) + "/10")                      
+                        Submit_btn.disabled = true
+                        New_Game.disabled = false       
+                    } else if(String(Ans_txt.value) > String(Rnd_no)){
+                        score = "Too swol"
+                        Scoretxt.innerHTML = score
+                        triez.innerHTML = String(tries)
+                        triez_no.innerHTML = String("no of treis:"+String(no_tries+1) + "/10")
+                    }else if(String(Ans_txt.value) < String(Rnd_no)){
+                        score = "Too smol"
+                        Scoretxt.innerHTML = score
+                        triez.innerHTML = String(tries)
+                        triez_no.innerHTML = String("no of treis:"+String(no_tries+1) + "/10")
+                    }else if (Number(Ans_txt.value) < 100){
+                        score = "Enter a number lower than 100!!"
+                        Scoretxt.innerHTML = score
+                        triez.innerHTML = String(tries)
+                        triez_no.innerHTML = String("no of treis:"+String(no_tries+1) + "/10")
+                        no_tries--                        
+                    }
+                    else{
+                        pass
+                    }
+                    no_tries++
+
+                }else{
+                    Submit_btn.disabled = true
+                    New_Game.disabled = false
+                    Scoretxt.innerHTML = String("the no is" + Rnd_no)
+
+                    
+                }
+                Ans_txt.innerHTML = ""
+            }
+
+            window.addEventListener('load', newgame)
+            New_Game.onclick = newgame
+
+            function tot(){
+                submit()
+                examine()
+            }
+
+            Submit_btn.onclick = tot
+
+
+        </script> 
+    </body>
+</DOCTYPE>
